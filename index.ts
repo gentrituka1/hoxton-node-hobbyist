@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import cors from "cors";
 import express from "express";
 
@@ -101,3 +101,7 @@ app.patch("/hobbies/:id", async (req, res) => {
     include: { user: true },
   });
 });
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+})
