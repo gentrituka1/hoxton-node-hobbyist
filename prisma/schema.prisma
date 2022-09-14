@@ -12,7 +12,7 @@ datasource db {
 
 model User {
   id       Int     @id @default(autoincrement())
-  fullName String?
+  fullName String? @unique
   image    String?
   email    String  @unique
   hobbies  Hobby[]
@@ -20,9 +20,8 @@ model User {
 
 model Hobby {
   id     Int     @id @default(autoincrement())
-  name   String
+  name   String  @unique
   image  String
   active Boolean @default(false)
-  userId Int
-  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  users  User[]
 }
